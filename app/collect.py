@@ -14,7 +14,7 @@ from app.logger import logger
 
 
 
-redis_client = redis.Redis(host="localhost", port=6379, decode_responses=True)
+redis_client = redis.Redis(host="redis", port=6379, decode_responses=True)
 
 dv_api = DVAPI()
 dv_currencies_path = Path("dv_currencies.json")
