@@ -39,7 +39,7 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
-logger.info()
+logger.info(settings)
 dv_network_map = {
     'bitcoin': ['BTC', 'BRC20'],
     'ethereum': ['ETH', 'ERC20'],
