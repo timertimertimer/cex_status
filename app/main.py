@@ -43,7 +43,7 @@ async def root():
 
 @app.get("/{token_name}")
 async def root(token_name: str):
-    data = await get_token_data_from_cache(token_name)
+    data = await get_token_data_from_cache(token_name.upper())
     if not data:
         return {"error": "token not found", "dv_tokens": await update_dv_currencies()}
     return data
