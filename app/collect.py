@@ -12,13 +12,12 @@ from app.config import settings, api_keys, dv_network_map, exchanges
 from app.dv_api import DVAPI
 from app.logger import logger
 
-
-
-redis_client = redis.Redis(host="redis", port=6379, decode_responses=True)
+redis_client = redis.Redis(host=settings.redis_host, port=settings.redis_port, decode_responses=True)
 
 dv_api = DVAPI()
 dv_currencies_path = Path("dv_currencies.json")
 dv_cache_key = "dv:currencies"
+
 
 async def load_dv_currencies():
     cached = await redis_client.get(dv_cache_key)

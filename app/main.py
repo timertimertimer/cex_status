@@ -1,7 +1,4 @@
-import logging
 from contextlib import asynccontextmanager
-
-import uvicorn
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.interval import IntervalTrigger
 from fastapi import FastAPI

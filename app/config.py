@@ -37,6 +37,9 @@ class Settings(BaseSettings):
     cex_data_ttl: int = seconds_in_one_minute * cex_data_update_ttl_minutes
     dv_currencies_ttl: int = seconds_in_one_minute * dv_currencies_update_ttl_minutes
 
+    redis_host: str = 'redis'
+    redis_port: int = 6379
+
 
 settings = Settings()
 logger.info(settings)
