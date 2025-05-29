@@ -2,7 +2,7 @@ import asyncio
 
 import httpx
 
-from config import settings
+from app.config import settings
 
 class DVAPI:
     def __init__(self, merchant_host: str = settings.merchant_host):

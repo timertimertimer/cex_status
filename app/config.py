@@ -4,7 +4,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file='../.env', env_file_encoding="utf-8", extra="allow")
+    model_config = SettingsConfigDict(env_file='.env', env_file_encoding="utf-8", extra="allow")
 
     seconds_in_one_minute: int = 60
     cex_data_update_ttl_minutes: int = 5
@@ -32,5 +32,5 @@ exchanges = [
     'mexc'  # no deposit limits
 ]
 
-with open('../api_keys.json', encoding='utf-8') as file:
+with open('api_keys.json', encoding='utf-8') as file:
     api_keys = json.load(file)
