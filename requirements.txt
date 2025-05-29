@@ -1,0 +1,8 @@
+ccxt
+httpx
+pydantic_settings
+redis
+fastapi
+uvicorn
+apscheduler
+loguru
