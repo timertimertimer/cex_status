@@ -4,6 +4,8 @@ from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+from app.logger import logger
+
 
 def find_project_root(file_name: str = '.env') -> Path:
     try:
