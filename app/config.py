@@ -1,10 +1,30 @@
 import json
+import sys
+from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
+def find_project_root(file_name: str = '.env') -> Path:
+    try:
+        main_path = Path(sys.modules["__main__"].__file__).resolve()
+        candidate = main_path.parent
+        if (candidate / file_name).exists():
+            return candidate
+        if (candidate.parent / file_name).exists():
+            return candidate.parent
+    except Exception:
+        pass
+    return Path.cwd()
+
+
+PROJECT_ROOT = find_project_root()
+env_path = PROJECT_ROOT / ".env"
+api_keys_path = PROJECT_ROOT / "api_keys.json"
+
+
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file='.env', env_file_encoding="utf-8", extra="allow")
+    model_config = SettingsConfigDict(env_file=env_path, env_file_encoding="utf-8", extra="allow")
 
     seconds_in_one_minute: int = 60
     cex_data_update_ttl_minutes: int = 5
@@ -17,6 +37,7 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
+logger.info()
 dv_network_map = {
     'bitcoin': ['BTC', 'BRC20'],
     'ethereum': ['ETH', 'ERC20'],
@@ -32,5 +53,5 @@ exchanges = [
     'mexc'  # no deposit limits
 ]
 
-with open('api_keys.json', encoding='utf-8') as file:
+with open(api_keys_path, encoding='utf-8') as file:
     api_keys = json.load(file)
