@@ -8,9 +8,9 @@ import ccxt.async_support as ccxt
 from ccxt.base.exchange import Exchange
 import redis.asyncio as redis
 
-from config import settings, api_keys, dv_network_map, exchanges
-from dv_api import DVAPI
-from logger import logger
+from app.config import settings, api_keys, dv_network_map, exchanges
+from app.dv_api import DVAPI
+from app.logger import logger
 
 
 
