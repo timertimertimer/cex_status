@@ -1,4 +1,6 @@
 from contextlib import asynccontextmanager
+
+import uvicorn
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.interval import IntervalTrigger
 from fastapi import FastAPI
@@ -44,3 +46,7 @@ async def root(token_name: str):
     if not data:
         return {"error": "token not found", "dv_tokens": await update_dv_currencies()}
     return data
+
+
+if __name__ == '__main__':
+    uvicorn.run(app)

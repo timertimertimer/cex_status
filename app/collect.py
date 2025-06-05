@@ -101,10 +101,10 @@ async def update_cex_data():
             data = await exc_obj.fetch_currencies()
             logger.info(f"[{exchange}] fetch_currencies returned {len(data)} currencies")
         except Exception as e:
-            logger.info(f"[{exchange}] fetch_currencies failed:", type(e), e)
+            logger.error(f"[{exchange}] fetch_currencies failed:", type(e), e.args[0])
             data = {}
         if not data:
-            logger.info(f"[{exchange}] fetch_currencies return None")
+            logger.warning(f"[{exchange}] fetch_currencies return None")
         await exc_obj.close()
         return exchange, data
 

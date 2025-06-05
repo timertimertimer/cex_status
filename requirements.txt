@@ -1,4 +1,4 @@
-git+https://github.com/timertimertimer/ccxt.git@fix#egg=ccxt
+ccxt @ git+https://github.com/timertimertimer/ccxt.git@fix#subdirectory=python
 httpx
 pydantic_settings
 redis
